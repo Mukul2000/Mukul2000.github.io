@@ -44,5 +44,5 @@ plugins:
 collections:
   projects:
     output: true
-    permalink: /projects/rag
+    permalink: /projects/:name
 
