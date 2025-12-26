@@ -1,8 +1,17 @@
 ---
 layout: page
-title: "Projects"
-permalink: /projects
+title: Projects
+permalink: /projects/
 ---
-# heading 1
 
-# heading 2
+## My Write-ups
+
+<ul>
+  {% for project in site.projects %}
+    <li>
+      <a href="{{ project.url | relative_url }}">
+        <strong>{{ project.title }}</strong>
+      </a> - {{ project.description }}
+    </li>
+  {% endfor %}
+</ul>
