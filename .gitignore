@@ -1,3 +1,7 @@
-_site
-.sass-cache
-.jekyll-metadata
+# Add these to your .gitignore:
+_site/                  # The generated website (output of jekyll build)
+.jekyll-cache/          # Cache for faster builds (Jekyll 4+)
+.jekyll-metadata        # Tracking for incremental builds
+.sass-cache/            # SASS compilation cache
+vendor/                 # Ruby gems installed locally (via bundle install)
+.bundle/                # Bundler configuration files
