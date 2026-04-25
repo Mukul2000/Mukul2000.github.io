@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>A Second Brain With “Teeth” | Mukul’s portfolio</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="A Second Brain With “Teeth”" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description." />
+<meta property="og:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description." />
+<link rel="canonical" href="http://localhost:4000/post/rag-on-notes" />
+<meta property="og:url" content="http://localhost:4000/post/rag-on-notes" />
+<meta property="og:site_name" content="Mukul’s portfolio" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-04-25T10:26:38+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="A Second Brain With “Teeth”" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2026-04-25T10:26:38+00:00","datePublished":"2026-04-25T10:26:38+00:00","description":"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.","headline":"A Second Brain With “Teeth”","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/post/rag-on-notes"},"url":"http://localhost:4000/post/rag-on-notes"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Mukul&apos;s portfolio" /><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Mukul&#39;s portfolio</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/posts/">Posts</a><a class="page-link" href="/about/">About</a><a class="page-link" href="/shelf/">Reading Shelf</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">A Second Brain With &quot;Teeth&quot;</h1>
+  </header>
+
+  <div class="post-content">
+    <h2 id="part-1-introduction"><strong>Part 1: Introduction</strong></h2>
+
+<h3 id="the-second-brain">The “Second Brain”</h3>
+
+<p>Second Brain philosophy is basically offloading your cognitive load to a digital system.</p>
+
+<p>We use it to store everything: study notes, todos, obscure things and so on. You name it, and you should store it in the vault. The idea is to free up your brain from storing information. You can always look up the vault for something you need.</p>
+
+<h3 id="the-project">The Project</h3>
+
+<p>Over the last few months, I’ve been building a custom Retrieval-Augmented Generation (RAG) pipeline specifically tuned for my personal notes. I’ll shortly come to the why of building it.</p>
+
+<blockquote>
+  <p>In summary: It’s basically a worse version of notebookLM :`)</p>
+</blockquote>
+
+<h2 id="part-2-the-problem"><strong>Part 2: The Problem</strong></h2>
+
+<h3 id="why-does-it-need-teeth">Why does it need “Teeth”</h3>
+
+<p>I am usually very selective and proper what goes into the second brain. Fast forward a couple of years I have about ~600 different notes and a graph of nodes I cannot make sense of. I am partly to blame for not organizing it earlier, but meh it’s too late now. It looks beautiful, but it’s becoming a “write-only” memory. The built-in keyword search is fine if I remember the exact term used, and if not, I’ll probably never find it.</p>
+
+<p>As you start using it for more things, you realise it leaves a lot to be desired, especially with all the AI advancements you don’t need to go through that toil.</p>
+<ul>
+  <li>Why’d you want to read through a 1000 line note for just one thing?</li>
+  <li>Maybe you spotted something that doesn’t make sense. You will probably need to gather context from previous sections or neighbouring notes to see if it’s right or wrong.</li>
+  <li>And even sometimes, you just need to go through multiple notes in an exploratory manner, you want to have a conversation about it.</li>
+  <li>The manual effort of organizing things is a lot. While I do have a basic level of organization into folders, and a good use of notes linking feature provided by Obsidian, it still isn’t enough for finding things. Any other organization method would probably lead to changes across the board, not to mention the effort of maintaining it.</li>
+</ul>
+
+<h2 id="part-3-the-solution"><strong>Part 3: The Solution</strong></h2>
+
+<p>With all the AI rage, you must’ve heard of embeddings. That’s precisely what we’re gonna use. Embeddings are similar to keyword search but are better in a sense that it actually understands the semantics (meaning) of the text.</p>
+
+<p>A Retrieval Augmented Generation setup will have the documents broken up into embeddings in a vector database. And whenever you need things you’ll query the database.</p>
+
+<p><img src="/assets/images/rag-on-notes/arch.png" alt="Architecture" width="960" /></p>
+
+<p>This is how the (ideal) system will come together. We’ll need the following things:</p>
+<ol>
+  <li>An LLM which the user (me) will interact with.</li>
+  <li>An MCP server which we will use to expose a tool for LLM which can search notes</li>
+  <li>A vector database for storing our embeddings</li>
+  <li>The Embedding System - This will do the heavy lifting of converting my notes to embeddings, storing them in the vector database and taking care of updates.
+    <ul>
+      <li>4.1 Embedding model</li>
+      <li>4.2 Embedding Engine - How do you want to breakup and chunk your notes</li>
+      <li>4.3 The file system</li>
+    </ul>
+  </li>
+</ol>
+
+<p>The stack looks something like this:</p>
+<ul>
+  <li><strong>LLM:</strong> I will not be choosy here, any good one will do. I chose to use gemini CLI which has easy support for MCP server integration.</li>
+  <li><strong>MCP</strong>: I used python fastMCP to quickly build an MCP server for this.</li>
+  <li><strong>Vector Database:</strong> There’s lot of vector databases on the market. Some are native and some are relational databases with a new vector datatype. I know I know it sounds a lot cooler to use the latest vector databases and that’s what I did. But for reasons I’ll come to later I actually found it easier to use postgres with a vector extension.</li>
+  <li><strong>Embedding System:</strong> Responsible for chunking and embedding data in the vector DB.</li>
+  <li><strong>Embedding Model:</strong> My requirements of an embedding model were not fancy, just needed a good one. I had no need for multi-lingual, and size for the most part wasn’t a big deal for me. I own a beefy GPU, I can run most embedding models without thinking twice.</li>
+</ul>
+
+<h3 id="embedding-engine">Embedding Engine</h3>
+<p>This is the foundation of the whole system. Performance in this section determines the performance of the system.</p>
+
+<h4 id="chunking-strategy">Chunking Strategy</h4>
+<p>All my notes are in markdown. And, markdown follows a specific structure (mostly). This post you’re reading is written in markdown!
+So the structure is you have headings, and inside you have subheadings forming a tree like structure.</p>
+
+<p><img src="/assets/images/rag-on-notes/markdown_structure.png" alt="Markdown structure" width="360" /></p>
+
+<p>The regular way of chunking unstructured data is you take X number of characters and you embed them. Then you slide the window so that you have a certain overlap (to preserve context between adjacent chunks) and embed that.</p>
+
+<p>With markdown, we can take advantage of the structure. Each heading will have content and we’ll add a ‘breadcrumb’ trail inside each heading to hopefully allow richer embeddings.</p>
+
+<p>In the above example, when encoding ‘Sub-heading of 2’ we’ll encode a breadcrumb trail like so: <code class="language-plaintext highlighter-rouge">Top Level Heading &gt; Sub-heading 2 &gt; Subheading of 2</code>.
+The final content that we’ll embed will look something like this: <code class="language-plaintext highlighter-rouge">&lt;breadcrumb trail&gt; &lt;page_content&gt;</code></p>
+
+<p>This helps the embedding model know that it should probably keep this embedding somewhere close to the embedding of top level heading. So now each file gets broken up into chunks, which are all linked to each other in some manner and are turned into embeddings then stored in the vector database.</p>
+
+<p>Obsidian provides a graph view of notes which tells you what all notes this is linked to. We can add the names of those neighbouring notes as well to enrich the embeddings even more.</p>
+
+<h4 id="handling-updates">Handling Updates</h4>
+
+<p>Adding new files is simple, but what about when a file is updated? There’s probably a few ways to do this but I went the easiest way, if a file is updated, I will simply re-embed it. I can get away with this due to the small scale of the project. You’ll likely want a more clever strategy when doing something like this in a production system.</p>
+
+<p>I store the following data for each chunk:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>metadata = {
+	file_path: ~/ok.md --&gt; needed for recon job updates
+	chunk_index: 0 / 1 / 2
+	file_hash: md5 hash of file content to check for updates
+	embedding_model: MiniLM / CLIP etc
+	created_at: &lt;timestamp&gt;
+	updated_at: &lt;timestamp&gt;
+},
+page_content = &lt;actual raw chunk content&gt;
+vector = &lt;actual embedding&gt;
+</code></pre></div></div>
+
+<p>The interesting part here is <code class="language-plaintext highlighter-rouge">file_hash</code>, if the file content hasn’t changed we can just skip embedding the thing altogether.
+If the file indeed has changed, the hash has changed, then we just delete ALL chunks belonging to that file and re-embed that file again. This is neat, and why I favored postgres over the newer vector databases. I can do the deletions in one transaction preventing any zombie chunks lying around.</p>
+
+<h3 id="the-metrics">The Metrics</h3>
+
+<p>Monitoring is divided into 3 different parts:</p>
+<ol>
+  <li><strong>Retrieval Metrics:</strong> How well your vector database and embedding model are performing. How relevant are the fetched results?</li>
+  <li><strong>Generation Metrics:</strong> Is the LLM hallucinating? Is the LLM output actually rooted in the context?</li>
+  <li><strong>Infra and Application Metrics:</strong> Latency, TTFT, time between tokens etc. But you mostly need to track this for user experience if you’re serving a large number of users. I am just serving me and I am totally fine to wait a bit for the LLM to output the response.</li>
+</ol>
+
+<h4 id="retrieval-metrics">Retrieval Metrics</h4>
+
+<p>These measure the performance of the vector database and the embeddings. How relevant are the fetched results? 
+There’s a world of metrics out there, but I decided to use the following 2:</p>
+
+<ul>
+  <li><strong>Context precision</strong>: Out of all the documents retrieved, what percentage is relevant to the query?  While we usually think of precision as “how many results were relevant?”, Ragas takes it a step further by measuring Rank-Aware Precision. It’s not just about finding the right note; it’s about ensuring the most relevant chunks are at the top of the pile.</li>
+  <li><strong>Context recall</strong>: Out of all the documents that are relevant to the query, what percentage is retrieved?</li>
+</ul>
+
+<p>Collecting these metrics starts with building a “Golden Dataset”. A Golden Dataset is a collection of “Ground Truth” triplets. Each entry consists of:</p>
+<ul>
+  <li><strong>The Question:</strong> A query I would actually ask my notes.</li>
+  <li><strong>The Context:</strong> The specific chunks in my database that contain the answer.</li>
+  <li><strong>The Ground Truth:</strong> The ideal, perfect answer based only on those chunks.</li>
+</ul>
+
+<p>Generating this manually for 300+ notes is soul-crushing work. Instead, I used Ragas to automate the process. Ragas doesn’t just ask simple facts; it creates complex, multi-context, and reasoning-based questions that actually stress-test the system.</p>
+
+<ol>
+  <li>It first takes a set of your notes, then asks the LLM (called a generator LLM) to generate good questions on it. Simple fact, multi-hop etc etc.</li>
+  <li>Then using the generated questions, it queries your vector database to retrieve the context.</li>
+</ol>
+
+<p>Now we can collect out metrics.</p>
+
+<ol>
+  <li><strong>Context Recall (The “Did I find it?” Metric)</strong>
+This measures the completeness of the search. If the answer to my question exists in a specific note about B+ Trees, did pgvector actually pull that note into the top results?</li>
+</ol>
+
+<p>Calculation:</p>
+
+\[\text{Context Recall} = \frac{|\text{Attributable Sentences in Ground Truth}|}{|\text{Total Sentences in Ground Truth}|}\]
+
+<p>If the Recall is low, something is wrong with how I am embedding things, the model itself could be weak or there is some other issue in the system</p>
+
+<ol>
+  <li><strong>Context Precision (The “Is there too much noise?” Metric)</strong></li>
+</ol>
+
+<p>This measures the quality of the ranking. It’s not enough to find the right note; it should be at the very top of the list. If I retrieve 5 chunks but the only relevant one is at the bottom (rank 5), my Precision is lower.</p>
+
+<p><strong>The Execution: LLM-as-a-Judge</strong>
+To calculate these, I used Gemini 2.5 Pro as a “Judge” (Very expensive stuff). Using a more powerful model as a judge results in better metrics because it can make sense of things better. Your generator might have outputted the right thing, but a weak judge might just give it a negative score. The process looks like this:</p>
+
+<blockquote>
+  <p>Tip: When building the golden dataset, start small and please save your golden dataset somewhere, I had to pay 2-3x in API fee because I deleted it and was being careless with initial experimentation.</p>
+</blockquote>
+
+<ol>
+  <li>My system retrieves chunks for a “Golden” question.</li>
+  <li>The Judge compares those retrieved chunks against the “Ground Truth.”</li>
+  <li>The Judge assigns a score from 0 to 1 based on how well the context supports the truth.</li>
+</ol>
+
+<h4 id="generation-metrics">Generation Metrics</h4>
+
+<p>These are often called the “RAG Triad”</p>
+
+<ul>
+  <li><strong>Faithfulness (Groundedness):</strong> Can every claim in the answer be traced back to the retrieved chunks? (Score 0–1). If this is low, the model is <strong>hallucinating</strong>.</li>
+  <li><strong>Answer Relevancy:</strong> Does the answer actually address the user’s prompt? Sometimes a model stays “faithful” to the text but fails to answer the actual question.</li>
+  <li><strong>Context Relevancy:</strong> How much of the retrieved context was actually used? If you retrieve 5 chunks but only use 1, you’re wasting tokens and increasing latency.</li>
+</ul>
+
+<p>We solve this using a technique called “AI as a Judge”. Frameworks like Ragas provide in-built support for measuring them. For example:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 1. Define the metric 
+</span><span class="n">metric</span> <span class="o">=</span> <span class="n">FaithfulnessMetric</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span> 
+<span class="c1"># 2. Create a test case from your actual RAG 
+</span><span class="n">run</span> <span class="n">test_case</span> <span class="o">=</span> <span class="n">LLMTestCase</span><span class="p">(</span> <span class="nb">input</span><span class="o">=</span><span class="s">"How do I change my Pi's WiFi?"</span><span class="p">,</span> <span class="n">actual_output</span><span class="o">=</span><span class="s">"You can change it by editing the wpa_supplicant.conf file."</span><span class="p">,</span> <span class="n">retrieval_context</span><span class="o">=</span><span class="p">[</span><span class="s">"To change wifi on a headless Pi, edit wpa_supplicant.conf on the SD card."</span><span class="p">]</span> <span class="p">)</span> 
+
+<span class="c1"># 3. Measure 
+</span><span class="n">metric</span><span class="p">.</span><span class="n">measure</span><span class="p">(</span><span class="n">test_case</span><span class="p">)</span> <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Score: </span><span class="si">{</span><span class="n">metric</span><span class="p">.</span><span class="n">score</span><span class="si">}</span><span class="s">"</span><span class="p">)</span> <span class="c1"># 0 to 1 
+</span><span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Reason: </span><span class="si">{</span><span class="n">metric</span><span class="p">.</span><span class="n">reason</span><span class="si">}</span><span class="s">"</span><span class="p">)</span> <span class="c1"># Why the judge gave that score
+</span></code></pre></div></div>
+
+<p>These can also be collected directly from our Golden Dataset.</p>
+
+<hr />
+
+<p>And with this, we’re done with the problem of setting up monitoring. Everytime I change something in my embedding system, I can quickly run this evaluator to see if it actually got better (or worse).</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Mukul&#39;s portfolio</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Mukul&#39;s portfolio</li><li><a class="u-email" href="mailto:mukulkumar627@gmail.com">mukulkumar627@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/Mukul2000"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">Mukul2000</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
