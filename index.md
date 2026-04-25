@@ -5,14 +5,18 @@
 layout: home
 permalink: /
 ---
-# About
-Hi there, my name is Mukul. I am a Software Engineer based out of Bangalore, India. 
 
-I am currently working at Google. I am part of the GCP Foundation Services. My team owns the Resource Hierarchy (Projects/Folders/Organizations) in Google Cloud, making it a critical control plane service. We serve all the hierarchy information required at runtime, serving over 80 million QPS from our data plane at ultra low latencies. I’ve contributed significantly to refactoring and hardening these systems to ensure they meet the extreme reliability standards required for GCP's foundation. 
+![Mukul Kumar](/assets/images/profile_pic.jpg)
 
-I tinker a fair bit outside of my day job too, mostly interested in Databases, Electronics and lately AI. You can see what I am working on under the Posts tab, or see what I am learning currently at my Reading Shelf. 
+Hi, I'm Mukul, a Software Engineer based in Bangalore, India.
 
-Thanks for stopping by! 
+Currently, I'm at Google within the Google Cloud Foundation Services. My team owns the GCP [Resource Hierarchy](https://docs.cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy) - the foundational control plane for the entry point into GCP. Every service or resource created in GCP is created under the project entity of the resource hierarchy. Our data plane serves over 100M QPS with high availability SLOs.
+
+The criticality of the services I work with has taught me a lot about distributed systems, reliability, hardening etc. My work focuses on re-architecting systems for scale for the GCP's agentic AI push and hardening the existing core services. It's also part of my efforts to modernize decade old legacy systems that are powering GCP today.
+
+Beyond my day job, I'm interested in video games, sports, and a ton of side projects. You can explore my latest projects in [Posts](/posts/) or see what I'm currently reading on my [Reading Shelf](/shelf/).
+
+Thanks for stopping by!
 
 # Contact
-Email me, mukulkumar627@gmail.com
+Email me at mukulkumar627@gmail.com

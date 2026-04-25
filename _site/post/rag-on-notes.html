@@ -13,11 +13,11 @@
 <meta property="og:url" content="http://localhost:4000/post/rag-on-notes" />
 <meta property="og:site_name" content="Mukul’s portfolio" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2026-04-25T10:26:38+00:00" />
+<meta property="article:published_time" content="2026-04-25T11:20:49+00:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="A Second Brain With “Teeth”" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2026-04-25T10:26:38+00:00","datePublished":"2026-04-25T10:26:38+00:00","description":"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.","headline":"A Second Brain With “Teeth”","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/post/rag-on-notes"},"url":"http://localhost:4000/post/rag-on-notes"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2026-04-25T11:20:49+00:00","datePublished":"2026-04-25T11:20:49+00:00","description":"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.","headline":"A Second Brain With “Teeth”","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/post/rag-on-notes"},"url":"http://localhost:4000/post/rag-on-notes"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Mukul&apos;s portfolio" /><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -238,6 +238,20 @@ To calculate these, I used Gemini 2.5 Pro as a “Judge” (Very expensive stuff
 <hr />
 
 <p>And with this, we’re done with the problem of setting up monitoring. Everytime I change something in my embedding system, I can quickly run this evaluator to see if it actually got better (or worse).</p>
+
+<h2 id="conclusion"><strong>Conclusion</strong></h2>
+
+<p>I am very happy to see myself actually and actively using a side project for once, not something that’s one and done and forgotten.</p>
+
+<p>Tackling this like a software engineering project at work honestly did help me overcome a lot of possible gotchas. I learnt a lot as I worked through the various challenges here too. I baked in evaluation and monitoring from Day 1, and they helped me a lot in trying to understand if the changes to the embedding system were actually positive or negative.</p>
+
+<p>While building this was fun. I do have a few more ideas on the roadmap.</p>
+<ul>
+  <li>Agentic Workflows: Integrating the Obsidian CLI so the system doesn’t just answer questions but can actually create new notes or update existing ones based on my conversations.</li>
+  <li>Local LLMs: Moving the “Judge” and the “Generator” to a local Ollama instance to make the system 100% private and internet-independent. There’s nothing I’d love more than to build a homelab which can run all my models locally. But for now my gaming PC will have to do.</li>
+</ul>
+
+<p>I hope I actually taught you something or atleast you found it fun. Bye :)</p>
 
   </div>
 
