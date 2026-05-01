@@ -104,25 +104,21 @@ Monitoring is divided into 3 different parts:
 2. **Generation Metrics:** Is the LLM hallucinating? Is the LLM output actually rooted in the context? 
 3. **Infra and Application Metrics:** Latency, TTFT, time between tokens etc. But you mostly need to track this for user experience if you're serving a large number of users. I am just serving me and I am totally fine to wait a bit for the LLM to output the response.
 
-#### Retrieval Metrics
+#### Generation Metrics
 
+These are often called the "RAG Triad"
+
+- **Faithfulness (Groundedness):** Can every claim in the answer be traced back to the retrieved chunks? (Score 0–1). If this is low, the model is **hallucinating**.
+- **Answer Relevancy:** Does the answer actually address the user's prompt? Sometimes a model stays "faithful" to the text but fails to answer the actual question.
+- **Context Relevancy:** How much of the retrieved context was actually used? If you retrieve 5 chunks but only use 1, you're wasting tokens and increasing latency.
+
+#### Retrieval Metrics
 These measure the performance of the vector database and the embeddings. How relevant are the fetched results? 
 There's a world of metrics out there, but I decided to use the following 2:
 
 - **Context precision**: Out of all the documents retrieved, what percentage is relevant to the query?  While we usually think of precision as "how many results were relevant?", Ragas takes it a step further by measuring Rank-Aware Precision. It’s not just about finding the right note; it’s about ensuring the most relevant chunks are at the top of the pile.
 - **Context recall**: Out of all the documents that are relevant to the query, what percentage is retrieved?
 
-Collecting these metrics starts with building a "Golden Dataset". A Golden Dataset is a collection of "Ground Truth" triplets. Each entry consists of:
-- **The Question:** A query I would actually ask my notes.
-- **The Context:** The specific chunks in my database that contain the answer.
-- **The Ground Truth:** The ideal, perfect answer based only on those chunks.
-
-Generating this manually for 300+ notes is soul-crushing work. Instead, I used Ragas to automate the process. Ragas doesn't just ask simple facts; it creates complex, multi-context, and reasoning-based questions that actually stress-test the system.
-
-1. It first takes a set of your notes, then asks the LLM (called a generator LLM) to generate good questions on it. Simple fact, multi-hop etc etc.
-2. Then using the generated questions, it queries your vector database to retrieve the context.
-
-Now we can collect out metrics.
 
 1. **Context Recall (The "Did I find it?" Metric)**
 This measures the completeness of the search. If the answer to my question exists in a specific note about B+ Trees, did pgvector actually pull that note into the top results?
@@ -139,24 +135,28 @@ If the Recall is low, something is wrong with how I am embedding things, the mod
 This measures the quality of the ranking. It’s not enough to find the right note; it should be at the very top of the list. If I retrieve 5 chunks but the only relevant one is at the bottom (rank 5), my Precision is lower.
 
 
+#### Collecting the Metrics via "Golden Dataset"
+
+Collecting these metrics starts with building a "Golden Dataset". A Golden Dataset is a collection of "Ground Truth" triplets. Each entry consists of:
+- **The Ground Truth:** Some content from my notes.
+- **The Question:** A question derived from ground truth by the generator LLM.
+- **The Context:** The chunks returned by the database given the question.
+
+Generating this manually for 300+ notes is soul-crushing work. Instead, I used Ragas to automate the process. Ragas can create simple fact-based, complex, multi-context, and reasoning-based questions that actually stress-test the system.
+
 **The Execution: LLM-as-a-Judge**
-To calculate these, I used Gemini 2.5 Pro as a "Judge" (Very expensive stuff). Using a more powerful model as a judge results in better metrics because it can make sense of things better. Your generator might have outputted the right thing, but a weak judge might just give it a negative score. The process looks like this:
 
- > Tip: When building the golden dataset, start small and please save your golden dataset somewhere, I had to pay 2-3x in API fee because I deleted it and was being careless with initial experimentation.
+To calculate these, I used Gemini 2.5 Pro as a "Judge" (Very expensive stuff). Using a more powerful model as a judge results in better evaluation because it can make sense of things better (like how you'd want your test grader to be smarter than you). Your generator might have outputted the right thing, but a weak judge might just give it a negative score. The process looks like this:
 
-1. My system retrieves chunks for a "Golden" question.
-2. The Judge compares those retrieved chunks against the "Ground Truth."
-3. The Judge assigns a score from 0 to 1 based on how well the context supports the truth.
+1. The inputs: Ground truth (ideal answer) and the retrieve context.
+2. The Judge LLM breaks down the ground truth answer into individual claims and asks "Can this specific claim be found in the retrieved chunks"
+3. For context recall the answer is ratio of attributed / total.
 
-#### Generation Metrics
+Context precision and other metrics are similarly calculated.
 
-These are often called the "RAG Triad"
+ > Tip: When building the golden dataset, start small and save your golden dataset somewhere (for example don't overwrite it), I had to pay 2-3x in API fee because I deleted it and was being careless with initial experimentation :(.
 
-- **Faithfulness (Groundedness):** Can every claim in the answer be traced back to the retrieved chunks? (Score 0–1). If this is low, the model is **hallucinating**.
-- **Answer Relevancy:** Does the answer actually address the user's prompt? Sometimes a model stays "faithful" to the text but fails to answer the actual question.
-- **Context Relevancy:** How much of the retrieved context was actually used? If you retrieve 5 chunks but only use 1, you're wasting tokens and increasing latency.
-
-We solve this using a technique called "AI as a Judge". Frameworks like Ragas provide in-built support for measuring them. For example:
+A rough evaluation would look like this:
 ```python
 # 1. Define the metric 
 metric = FaithfulnessMetric(threshold=0.7) 
@@ -168,11 +168,13 @@ metric.measure(test_case) print(f"Score: {metric.score}") # 0 to 1
 print(f"Reason: {metric.reason}") # Why the judge gave that score
 ```
 
-These can also be collected directly from our Golden Dataset.
-
 -------------------
 
 And with this, we're done with the problem of setting up monitoring. Everytime I change something in my embedding system, I can quickly run this evaluator to see if it actually got better (or worse).
+
+## Results
+
+
 
 ## **Conclusion**
 
